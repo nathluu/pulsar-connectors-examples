@@ -1,5 +1,4 @@
-package com.humana.dhp.spark.jobs
-
+package com.example.spark.jobs
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
@@ -22,7 +21,7 @@ object WordCount extends App {
     .option("startingOffsets", "latest")
     .load()
 
-  lines.printSchema()
+//  lines.printSchema()
 
 //  val words = lines.select(col("value").cast("string"))
 //    .as[String].flatMap(_.split("\\s+"))
@@ -30,10 +29,9 @@ object WordCount extends App {
 //  val wc = words.groupBy("value").count()
 
 //  val query = wc.selectExpr("to_json(struct(*)) AS value")
-  val out = lines.select(col("__eventTime"), col("value").cast("string"))
-  out.printSchema()
+  val out = lines.select(col("value").cast("string"))
 
-  val query = out.selectExpr("to_json(struct(*)) AS value").writeStream
+  val query = out.writeStream
     .format("pulsar")
 //    .outputMode("complete")
     .option("checkpointLocation", "/tmp/checkpoint")
