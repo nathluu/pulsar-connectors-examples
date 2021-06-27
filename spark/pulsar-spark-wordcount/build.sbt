@@ -20,7 +20,7 @@ val sparkVersion = "2.4.5"
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "io.streamnative.connectors" %% "pulsar-spark-connector" % "2.4.6-SNAPSHOT" % "provided"
+  "io.streamnative.connectors" %% "pulsar-spark-connector" % "2.5.2" % "provided"
 //  "io.streamnative.connectors" %% "pulsar-spark-connector" % "2.4.5"
 )
 
