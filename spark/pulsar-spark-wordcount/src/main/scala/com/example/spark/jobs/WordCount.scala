@@ -32,6 +32,8 @@ object WordCount extends App {
     .option("checkpointLocation", "/tmp/checkpoint")
     .option("service.url", "pulsar://192.168.56.2:6650")
     .option("admin.url", "http://192.168.56.2:8080")
-    .option("topic", "apache/pulsar/my-result-topic")
+    .option("pulsar.client.authPluginClassName", "org.apache.pulsar.client.impl.auth.AuthenticationToken")
+    .option("pulsar.client.authParams", "token:eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiJ9.etXkxEP3vJlKIuwO7YRdr7IVSvnCD4107jLacuYIdBo")
+    .option("topic", "apache/pulsar/my-topic")
     .save()
 }
