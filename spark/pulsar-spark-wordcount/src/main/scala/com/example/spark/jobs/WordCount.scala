@@ -12,13 +12,13 @@ object WordCount extends App {
   import spark.implicits._
   spark.sparkContext.setLogLevel("ERROR")
 
-  val certPath = getClass.getResource("/ca.cet.pem").getPath
+  val certPath = getClass.getResource("/ca.cert.pem").getPath
   val lines = spark.readStream
     .format("pulsar")
     .option("service.url", "pulsar+ssl://192.168.243.2:6651")
     .option("admin.url", "https://192.168.243.2:8443")
     .option("pulsar.client.authPluginClassName", "org.apache.pulsar.client.impl.auth.AuthenticationToken")
-    .option("pulsar.client.authParams", "token:abc")
+    .option("pulsar.client.authParams", "token:eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlci11c2VyIiwiZXhwIjoxNjU1MTk5NTgzfQ.ae6sHHtMwuLP0on-0Gvcmy7bnDCTSDhcnt_r41NCCjo")
     .option("pulsar.client.tlsTrustCertsFilePath", certPath)
     .option("pulsar.client.tlsAllowInsecureConnection", "false")
     .option("pulsar.client.tlsHostnameVerificationEnable", "false")
@@ -34,7 +34,7 @@ object WordCount extends App {
     .option("service.url", "pulsar+ssl://192.168.243.2:6651")
     .option("admin.url", "https://192.168.243.2:8443")
     .option("pulsar.client.authPluginClassName", "org.apache.pulsar.client.impl.auth.AuthenticationToken")
-    .option("pulsar.client.authParams", "token:abc")
+    .option("pulsar.client.authParams", "token:eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlci11c2VyIiwiZXhwIjoxNjU1MTk5NTgzfQ.ae6sHHtMwuLP0on-0Gvcmy7bnDCTSDhcnt_r41NCCjo")
     .option("pulsar.client.tlsTrustCertsFilePath", certPath)
     .option("pulsar.client.tlsAllowInsecureConnection", "false")
     .option("pulsar.client.tlsHostnameVerificationEnable", "false")
