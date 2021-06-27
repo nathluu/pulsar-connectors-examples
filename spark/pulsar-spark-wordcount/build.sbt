@@ -11,8 +11,8 @@ lazy val root = (project in file(".")).
     version := "0.0.1-SNAPSHOT",
     scalaVersion := "2.11.12",
 //    assembly / test := {},
-    mainClass in Compile := Some("com.humana.dhp.spark.jobs.WordCount")
-//    mainClass in assembly := Some("com.humana.dhp.spark.jobs.WordCount")
+    mainClass in Compile := Some("com.example.spark.jobs.WordCount")
+//    mainClass in assembly := Some("com.example.spark.jobs.WordCount")
   )
 
 val sparkVersion = "2.4.5"
