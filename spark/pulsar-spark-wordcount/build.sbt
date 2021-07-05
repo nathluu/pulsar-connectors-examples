@@ -9,18 +9,18 @@ lazy val root = (project in file(".")).
   settings(
     name := "pulsarspark",
     version := "0.0.1-SNAPSHOT",
-    scalaVersion := "2.11.12",
+    scalaVersion := "2.12.10",
 //    assembly / test := {},
     mainClass in Compile := Some("com.example.spark.jobs.WordCount")
 //    mainClass in assembly := Some("com.example.spark.jobs.WordCount")
   )
 
-val sparkVersion = "2.4.5"
+val sparkVersion = "3.1.1"
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "io.streamnative.connectors" %% "pulsar-spark-connector" % "2.5.2" % "provided"
+  "io.streamnative.connectors" %% "pulsar-spark-connector" % "3.1.1-SNAPSHOT" % "provided"
 //  "io.streamnative.connectors" %% "pulsar-spark-connector" % "2.4.5"
 )
 
