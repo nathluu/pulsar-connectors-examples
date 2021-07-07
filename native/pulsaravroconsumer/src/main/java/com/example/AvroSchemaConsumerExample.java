@@ -35,17 +35,22 @@ public class AvroSchemaConsumerExample {
                     .topic(TOPIC)
                     .subscriptionInitialPosition(SubscriptionInitialPosition.Earliest)
                     .subscriptionName("test-payments")
-                    .subscribe()) {
+                    .subscribe();) {
 
 //                final int numMessages = 10;
-
+                consumer.seek(MessageId.latest);
                 while (true) {
                     Message<Count> msg = consumer.receive();
 
-                    final String key = msg.getKey();
-                    final Count count = msg.getValue();
+                    try {
+                        final String key = msg.getKey();
+                        final Count count = msg.getValue();
 
-                    System.out.printf("key = %s, value = %s%n", key, count);
+                        System.out.printf("key = %s, value = %s%n", key, count);
+                        consumer.acknowledge(msg);
+                    } catch (Exception e) {
+                        consumer.negativeAcknowledge(msg);
+                    }
                 }
             }
         } catch (PulsarClientException e) {
