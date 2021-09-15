@@ -1,0 +1,2 @@
+com/example/MyPulsarProducer.java
+ com.example.MyPulsarProducer

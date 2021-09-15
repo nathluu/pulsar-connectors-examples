@@ -17,11 +17,11 @@ public class AvroSchemaConsumerExample {
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) {
 
-        final String pulsarServiceUrl = "pulsar://localhost:6650";
+        final String pulsarServiceUrl = "pulsar://192.168.56.2:6650";
 
         try (PulsarClient client = PulsarClient.builder()
                 .serviceUrl(pulsarServiceUrl)
-                .authentication(AuthenticationFactory.token("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiJ9.etXkxEP3vJlKIuwO7YRdr7IVSvnCD4107jLacuYIdBo"))
+//                .authentication(AuthenticationFactory.token("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiJ9.etXkxEP3vJlKIuwO7YRdr7IVSvnCD4107jLacuYIdBo"))
                 .build()) {
 
             Schema<Count> countSchema = Schema.AVRO(
@@ -33,7 +33,7 @@ public class AvroSchemaConsumerExample {
 
             try (Consumer<Count> consumer = client.newConsumer(countSchema)
                     .topic(TOPIC)
-                    .subscriptionInitialPosition(SubscriptionInitialPosition.Earliest)
+                    .subscriptionInitialPosition(SubscriptionInitialPosition.Latest)
                     .subscriptionName("test-payments")
                     .subscribe();) {
 
